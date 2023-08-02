@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  bigquery-emulator:
+    image: ghcr.io/goccy/bigquery-emulator:latest
+    platform: linux/x86_64
+    ports:
+      - "9050:9050"
+    environment:
+      - STORAGE_EMULATOR_HOST=localhost:9023
+    volumes:
+      - ./testdata:/testdata
+    command: ["--project=test"]
